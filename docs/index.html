@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Genre des Noms Français</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- MENU SCREEN -->
+  <div id="menu" class="screen active">
+    <h1>Genre des Noms Français</h1>
+    <p class="subtitle">Entraînement au genre</p>
+
+    <div class="menu-cards">
+      <button class="menu-card" onclick="startMode('nouns')">
+        <span class="menu-card-title">Top 50 Noms</span>
+        <span class="menu-card-desc">le ou la ?</span>
+        <span class="menu-card-progress" id="nouns-progress">0 / 50 maîtrisés</span>
+      </button>
+
+      <button class="menu-card" onclick="startMode('endings')">
+        <span class="menu-card-title">Terminaisons</span>
+        <span class="menu-card-desc">masculin ou féminin ?</span>
+        <span class="menu-card-progress" id="endings-progress">0 / 34 maîtrisés</span>
+      </button>
+    </div>
+
+    <button class="reset-btn" onclick="confirmReset()">Réinitialiser la progression</button>
+  </div>
+
+  <!-- PRACTICE SCREEN -->
+  <div id="practice" class="screen">
+    <div class="practice-header">
+      <button class="back-btn" onclick="goToMenu()">&larr; Menu</button>
+      <span class="card-counter" id="card-counter"></span>
+    </div>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
+    <!-- Question state -->
+    <div id="question-state">
+      <div class="card" id="card-prompt"></div>
+      <div class="answer-buttons" id="answer-buttons"></div>
+    </div>
+
+    <!-- Answer state -->
+    <div id="answer-state" class="hidden">
+      <div class="card" id="card-answer"></div>
+      <div class="answer-footer">
+        <label class="mastered-label">
+          <input type="checkbox" id="mastered-check">
+          <span>J'ai compris !</span>
+        </label>
+        <button class="next-btn" id="next-btn">Suivant &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPLETION SCREEN -->
+  <div id="complete" class="screen">
+    <div class="complete-content">
+      <div class="complete-emoji">&#127881;</div>
+      <h2>Bravo !</h2>
+      <p id="complete-msg"></p>
+      <button class="menu-card" onclick="goToMenu()">Retour au menu</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

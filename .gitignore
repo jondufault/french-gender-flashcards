@@ -1,0 +1,6 @@
+*.aux
+*.log
+*.synctex.gz
+.DS_Store
+.claude/
+__pycache__/
