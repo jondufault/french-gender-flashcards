@@ -201,28 +201,35 @@ h1 {
   font-style: italic;
 }
 
-.card.correct {
-  border-color: #27AE60;
-  background: var(--correct-bg);
+.card.gender-masc {
+  border-color: var(--masc);
+  background: var(--masc-light);
 }
 
-.card.incorrect {
+.card.gender-fem {
   border-color: var(--fem);
-  background: var(--incorrect-bg);
+  background: var(--fem-light);
 }
 
 .card .feedback {
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 6px;
   margin-bottom: 4px;
+  display: inline-block;
 }
 
 .card .feedback.correct-text {
   color: #1E8449;
+  background: #D5F5E3;
 }
 
 .card .feedback.incorrect-text {
-  color: var(--fem);
+  color: #922B21;
+  background: #F9E0DE;
 }
 
 .answer-buttons {

@@ -58,6 +58,40 @@
     { word: "nuit", gender: "la", hint: "" }
   ];
 
+  // Rule info for noun flip-card details
+  var NOUN_RULES = {
+    "-ée":      { rule: "Noms en -ée → féminins", examples: "la journée, l'idée, la pensée", exceptions: "le musée, le lycée, le trophée" },
+    "-ie":      { rule: "Noms en -ie → féminins", examples: "la vie, la philosophie, la maladie", exceptions: "le génie, l'incendie" },
+    "-ment":    { rule: "Noms en -ment → masculins", examples: "le moment, le mouvement, le département", exceptions: "(aucune)" },
+    "-son":     { rule: "Noms en -son/-aison → féminins", examples: "la raison, la saison, la chanson", exceptions: "(aucune)" },
+    "-ail":     { rule: "Noms en -ail → masculins", examples: "le travail, le détail, le vitrail", exceptions: "(aucune)" },
+    "-tion":    { rule: "Noms en -tion → féminins", examples: "la situation, l'attention, la nation", exceptions: "(aucune)" },
+    "grec":     { rule: "Mots d'origine grecque en -ème → masculins", examples: "le problème, le système, le thème", exceptions: "(aucune)" },
+    "-ille":    { rule: "Noms en -ille → féminins", examples: "la ville, la fille, la famille", exceptions: "le gorille" },
+    "double+e": { rule: "Consonne double + e → féminins", examples: "la terre, la guerre, la femme", exceptions: "l'homme, le gramme" },
+    "-té":      { rule: "Noms en -té → féminins", examples: "la liberté, la société, la santé", exceptions: "le côté, le comité, le traité" },
+    "-ue":      { rule: "Noms en -ue → féminins", examples: "la rue, la vue, la statue", exceptions: "(rare)" },
+    "-oire":    { rule: "Noms en -oire → féminins", examples: "l'histoire, la mémoire, la victoire", exceptions: "le territoire, le laboratoire" },
+    "-eau":     { rule: "Noms en -eau → masculins", examples: "le bateau, le chapeau, le bureau", exceptions: "la peau, l'eau" },
+    "-eure":    { rule: "Noms en -eure → féminins", examples: "l'heure, la demeure", exceptions: "(aucune)" },
+    "-phone":   { rule: "Noms en -phone → masculins", examples: "le téléphone, le microphone", exceptions: "(aucune)" },
+    "-onne":    { rule: "Noms en -onne → féminins", examples: "la personne, la couronne, la colonne", exceptions: "(aucune)" },
+    "except.":  { rule: "Exception courante — à mémoriser" },
+    "sens":     { rule: "Genre déterminé par le sens" }
+  };
+
+  function startsWithVowelSound(word) {
+    return /^[aeéèêëiîïoôuûùüâäæœh]/i.test(word);
+  }
+
+  function articleFor(gender, word) {
+    var vowel = startsWithVowelSound(word);
+    if (gender === "le/la") return vowel ? "un/une" : "le/la";
+    if (gender === "le") return vowel ? "un" : "le";
+    if (gender === "la") return vowel ? "une" : "la";
+    return gender;
+  }
+
   var ENDINGS = [
     // Base rules
     { ending: "-tion / -sion / -aison", gender: "f", examples: "la situation, la décision, la question, la maison, la raison", exceptions: "(aucune)", category: "base" },
@@ -240,13 +274,18 @@
     progressBar.style.width = (deckIndex / deck.length * 100) + "%";
 
     if (currentMode === "nouns") {
+      var useUnUne = startsWithVowelSound(item.word);
+      var promptText = useUnUne ? "un ou une ?" : "le ou la ?";
+      var mascLabel = useUnUne ? "un" : "le";
+      var femLabel = useUnUne ? "une" : "la";
+
       cardPrompt.innerHTML =
         '<div class="word">' + escapeHtml(item.word) + '</div>' +
-        '<div class="prompt-text">le ou la ?</div>';
+        '<div class="prompt-text">' + promptText + '</div>';
 
       answerButtons.innerHTML =
-        '<button class="answer-btn masc" onclick="handleAnswer(\'le\')">le</button>' +
-        '<button class="answer-btn fem" onclick="handleAnswer(\'la\')">la</button>';
+        '<button class="answer-btn masc" onclick="handleAnswer(\'' + mascLabel + '\')">' + mascLabel + '</button>' +
+        '<button class="answer-btn fem" onclick="handleAnswer(\'' + femLabel + '\')">' + femLabel + '</button>';
     } else {
       cardPrompt.innerHTML =
         '<div class="word">' + escapeHtml(item.ending) + '</div>' +
@@ -274,10 +313,10 @@
 
     if (currentMode === "nouns") {
       if (item.gender === "le/la") {
-        // enfant: accept either
         isCorrect = true;
       } else {
-        isCorrect = (choice === item.gender);
+        var correctArticle = articleFor(item.gender, item.word);
+        isCorrect = (choice === correctArticle);
       }
     } else {
       isCorrect = (choice === item.gender);
@@ -289,29 +328,42 @@
     questionState.classList.add("hidden");
     answerState.classList.remove("hidden");
 
-    var feedbackClass = isCorrect ? "correct" : "incorrect";
     var feedbackText = isCorrect ? "Correct !" : "Incorrect";
     var feedbackTextClass = isCorrect ? "correct-text" : "incorrect-text";
 
-    cardAnswer.className = "card " + feedbackClass;
+    // Gender-based card color
+    var genderClass;
+    if (currentMode === "nouns") {
+      genderClass = (item.gender === "la") ? "gender-fem" : "gender-masc";
+    } else {
+      genderClass = (item.gender === "f") ? "gender-fem" : "gender-masc";
+    }
+    cardAnswer.className = "card " + genderClass;
 
     if (currentMode === "nouns") {
+      var displayArticle = articleFor(item.gender, item.word);
       var genderColor = (item.gender === "la") ? "fem-color" : "masc-color";
-      var displayGender = item.gender;
-      if (item.gender === "le/la") {
-        genderColor = "masc-color";
-        displayGender = "le/la";
-      }
 
       var html =
         '<div class="feedback ' + feedbackTextClass + '">' + feedbackText + '</div>' +
-        '<div class="answer-gender ' + genderColor + '">' + escapeHtml(displayGender) + '</div>' +
+        '<div class="answer-gender ' + genderColor + '">' + escapeHtml(displayArticle) + '</div>' +
         '<div class="answer-word">' + escapeHtml(item.word) + '</div>';
 
       if (item.gender === "le/la") {
-        html += '<div class="answer-hint">le/la — les deux</div>';
+        html += '<div class="answer-hint">les deux genres acceptés</div>';
       } else if (item.hint) {
-        html += '<div class="answer-hint">' + escapeHtml(item.hint) + '</div>';
+        var ruleInfo = NOUN_RULES[item.hint];
+        if (ruleInfo) {
+          html += '<div class="answer-hint">' + escapeHtml(ruleInfo.rule) + '</div>';
+          if (ruleInfo.examples) {
+            html += '<div class="answer-examples">' + escapeHtml(ruleInfo.examples) + '</div>';
+          }
+          if (ruleInfo.exceptions && ruleInfo.exceptions !== "(aucune)") {
+            html += '<div class="answer-exceptions">Exceptions : ' + escapeHtml(ruleInfo.exceptions) + '</div>';
+          }
+        } else {
+          html += '<div class="answer-hint">' + escapeHtml(item.hint) + '</div>';
+        }
       }
 
       cardAnswer.innerHTML = html;
