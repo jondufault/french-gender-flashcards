@@ -211,6 +211,11 @@ h1 {
   background: var(--fem-light);
 }
 
+.card.prep-answer {
+  border-color: #4A235A;
+  background: #F3ECF7;
+}
+
 .card .feedback {
   font-size: 0.85rem;
   font-weight: 700;
@@ -274,6 +279,29 @@ h1 {
 .answer-btn.fem:hover, .answer-btn.fem:focus {
   box-shadow: 0 2px 12px rgba(146, 43, 33, 0.3);
   outline: none;
+}
+
+.answer-btn.prep {
+  background: #E8DAEF;
+  border-color: #4A235A;
+  color: #4A235A;
+}
+
+.answer-btn.prep:hover, .answer-btn.prep:focus {
+  box-shadow: 0 2px 12px rgba(74, 35, 90, 0.3);
+  outline: none;
+}
+
+.answer-buttons.three-col {
+  display: flex;
+  gap: 10px;
+}
+
+.answer-buttons.three-col .answer-btn {
+  flex: 1;
+  font-size: 1.15rem;
+  padding: 18px 6px;
+  min-height: 72px;
 }
 
 .answer-footer {
