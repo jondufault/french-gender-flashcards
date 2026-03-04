@@ -407,7 +407,9 @@
         '<button class="answer-btn masc" onclick="handleAnswer(\'' + mascLabel + '\')">' + mascLabel + '</button>' +
         '<button class="answer-btn fem" onclick="handleAnswer(\'' + femLabel + '\')">' + femLabel + '</button>';
     } else if (currentMode === "endings") {
-      var allExamples = item.examples.split(",").map(function (s) { return s.trim(); });
+      var allExamples = item.examples.split(",").map(function (s) {
+        return s.trim().replace(/^(le |la |l'|les |un |une )/i, "");
+      });
       var picked = [];
       var pool = allExamples.slice();
       while (picked.length < 2 && pool.length > 0) {
