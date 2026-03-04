@@ -407,8 +407,16 @@
         '<button class="answer-btn masc" onclick="handleAnswer(\'' + mascLabel + '\')">' + mascLabel + '</button>' +
         '<button class="answer-btn fem" onclick="handleAnswer(\'' + femLabel + '\')">' + femLabel + '</button>';
     } else if (currentMode === "endings") {
+      var allExamples = item.examples.split(",").map(function (s) { return s.trim(); });
+      var picked = [];
+      var pool = allExamples.slice();
+      while (picked.length < 2 && pool.length > 0) {
+        var idx = Math.floor(Math.random() * pool.length);
+        picked.push(pool.splice(idx, 1)[0]);
+      }
       cardPrompt.innerHTML =
         '<div class="word">' + escapeHtml(item.ending) + '</div>' +
+        '<div class="examples-hint">' + picked.map(escapeHtml).join(", ") + '</div>' +
         '<div class="prompt-text">masculin ou féminin ?</div>';
 
       answerButtons.innerHTML =

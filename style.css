@@ -172,6 +172,12 @@ h1 {
   color: #888;
 }
 
+.card .examples-hint {
+  font-size: 1.05rem;
+  color: #555;
+  font-style: italic;
+}
+
 .card .answer-word {
   font-size: 1.8rem;
   font-weight: 700;
