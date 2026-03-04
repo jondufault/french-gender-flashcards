@@ -31,6 +31,12 @@
         <span class="menu-card-desc">à, de ou direct ?</span>
         <span class="menu-card-progress" id="verbs-progress">0 / 91 maîtrisés</span>
       </button>
+
+      <button class="menu-card srs-menu-card" onclick="startSRS()">
+        <span class="menu-card-title">SRS — 500 Noms</span>
+        <span class="menu-card-desc">répétition espacée · le ou la ?</span>
+        <span class="menu-card-progress" id="srs-progress">0 mots · 50.0% couverture</span>
+      </button>
     </div>
 
     <button class="reset-btn" onclick="confirmReset()">Réinitialiser la progression</button>
@@ -75,6 +81,110 @@
     </div>
   </div>
 
+  <!-- SRS DASHBOARD -->
+  <div id="srs-dashboard" class="screen">
+    <div class="practice-header">
+      <button class="back-btn" onclick="srsBackToMenu()">&larr; Menu</button>
+      <span class="card-counter">SRS — 500 Noms</span>
+    </div>
+
+    <div class="srs-score-section">
+      <div class="srs-score-label">Couverture estimée</div>
+      <div class="srs-score-big" id="srs-score">0.0%</div>
+      <div class="srs-score-bar-container">
+        <div class="srs-score-bar" id="srs-score-bar"></div>
+      </div>
+      <div class="srs-score-sub">% de la langue couverte par des mots que vous connaissez</div>
+    </div>
+
+    <div class="srs-stats">
+      <div class="srs-stat">
+        <div class="srs-stat-value" id="srs-learned">0 / 500</div>
+        <div class="srs-stat-label">introduits</div>
+      </div>
+      <div class="srs-stat">
+        <div class="srs-stat-value" id="srs-due">0</div>
+        <div class="srs-stat-label">à réviser</div>
+      </div>
+      <div class="srs-stat">
+        <div class="srs-stat-value" id="srs-known">0</div>
+        <div class="srs-stat-label">acquis</div>
+      </div>
+    </div>
+
+    <button class="srs-start-btn" id="srs-start-btn" onclick="srsStartSession()">Commencer</button>
+    <button class="srs-triage-btn" onclick="srsStartTriage()">Trier les mots que je connais déjà</button>
+
+    <div class="srs-actions">
+      <button class="srs-action-btn" onclick="srsExport()">Exporter</button>
+      <button class="srs-action-btn" onclick="srsImport()">Importer</button>
+      <input type="file" id="srs-import-file" accept=".json" class="hidden" onchange="srsHandleImport(this)">
+      <button class="srs-action-btn srs-reset" onclick="srsResetConfirm()">Réinitialiser</button>
+    </div>
+
+    <!-- Completion overlay -->
+    <div id="srs-complete-overlay" class="srs-overlay hidden">
+      <div class="srs-overlay-content">
+        <h2>Session terminée !</h2>
+        <div class="srs-complete-stat">
+          <span class="srs-complete-label">Cette session :</span>
+          <span id="srs-complete-session-score"></span>
+        </div>
+        <div class="srs-complete-stat">
+          <span class="srs-complete-label">Couverture globale :</span>
+          <span id="srs-complete-global-score"></span>
+        </div>
+        <div class="srs-complete-stat">
+          <span id="srs-complete-learned"></span>
+        </div>
+        <button class="menu-card" onclick="srsDismissComplete()" style="margin-top:20px">Continuer</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SRS TRIAGE — bulk mark words you already know -->
+  <div id="srs-triage" class="screen">
+    <div class="practice-header">
+      <button class="back-btn" onclick="srsTriageBack()">&larr; Dashboard</button>
+      <span class="card-counter" id="triage-counter"></span>
+    </div>
+
+    <div class="card triage-card">
+      <div class="word" id="triage-word"></div>
+      <div id="triage-reveal" class="triage-reveal hidden"></div>
+    </div>
+
+    <div class="triage-buttons" id="triage-buttons">
+      <button class="answer-btn triage-know" onclick="srsTriageKnow()">Je sais</button>
+      <button class="answer-btn triage-test" onclick="srsTriageTest()">À tester</button>
+    </div>
+
+    <div class="triage-hint">Marquez les mots dont vous connaissez le genre sans hésiter.</div>
+  </div>
+
+  <!-- SRS PRACTICE (continuous) -->
+  <div id="srs-practice" class="screen">
+    <div class="practice-header">
+      <button class="back-btn" onclick="srsEndSession()">Terminer</button>
+      <span class="card-counter" id="srs-card-counter"></span>
+    </div>
+    <div class="srs-queue-depth" id="srs-queue-depth"></div>
+
+    <div id="srs-question-state">
+      <div class="card" id="srs-card-prompt"></div>
+      <div class="answer-buttons" id="srs-answer-buttons"></div>
+    </div>
+
+    <div id="srs-answer-state" class="hidden">
+      <div class="card" id="srs-card-answer"></div>
+      <div class="answer-footer">
+        <button class="srs-known-btn" onclick="srsMarkKnown()">Acquis — ne plus tester</button>
+        <button class="next-btn" onclick="srsNext()">Suivant &rarr;</button>
+      </div>
+    </div>
+  </div>
+
   <script src="app.js"></script>
+  <script src="srs.js"></script>
 </body>
 </html>

@@ -313,9 +313,8 @@
   }
 
   function showScreen(screen) {
-    menuScreen.classList.remove("active");
-    practiceScreen.classList.remove("active");
-    completeScreen.classList.remove("active");
+    var all = document.querySelectorAll(".screen");
+    for (var i = 0; i < all.length; i++) all[i].classList.remove("active");
     screen.classList.add("active");
   }
 

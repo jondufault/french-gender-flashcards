@@ -378,3 +378,243 @@ h1 {
 
 .masc-color { color: var(--masc); }
 .fem-color { color: var(--fem); }
+
+/* ---- SRS ---- */
+
+.srs-menu-card {
+  border-color: #7D3C98;
+  background: linear-gradient(135deg, #F5EEF8, #FDFEFE);
+}
+.srs-menu-card:hover, .srs-menu-card:focus {
+  border-color: #6C3483;
+  box-shadow: 0 2px 12px rgba(125, 60, 152, 0.2);
+}
+
+.srs-score-section {
+  text-align: center;
+  padding: 24px 0 16px;
+}
+.srs-score-label {
+  font-size: 0.9rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+.srs-score-big {
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.1;
+}
+.srs-score-bar-container {
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  margin: 12px 0 8px;
+  overflow: hidden;
+}
+.srs-score-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #E74C3C, #F39C12, #27AE60);
+  border-radius: 4px;
+  transition: width 0.5s;
+  width: 50%;
+}
+.srs-score-sub {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+.srs-stats {
+  display: flex;
+  gap: 12px;
+  margin: 20px 0;
+}
+.srs-stat {
+  flex: 1;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 14px 8px;
+  text-align: center;
+}
+.srs-stat-value {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.srs-stat-label {
+  font-size: 0.75rem;
+  color: #999;
+  margin-top: 2px;
+}
+
+.srs-start-btn {
+  display: block;
+  width: 100%;
+  padding: 18px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: #7D3C98;
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  font-family: inherit;
+  margin-bottom: 20px;
+}
+.srs-start-btn:hover { opacity: 0.9; }
+.srs-start-btn:disabled {
+  background: #ccc;
+  cursor: default;
+}
+
+.srs-triage-btn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  background: #fff;
+  color: #7D3C98;
+  border: 2px solid #7D3C98;
+  border-radius: 14px;
+  cursor: pointer;
+  font-family: inherit;
+  margin-bottom: 20px;
+}
+.srs-triage-btn:hover { background: #F5EEF8; }
+
+.srs-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+.srs-action-btn {
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  color: #666;
+  cursor: pointer;
+  font-family: inherit;
+}
+.srs-action-btn:hover { border-color: #999; color: #333; }
+.srs-action-btn.srs-reset { color: var(--fem); border-color: var(--fem); }
+.srs-action-btn.srs-reset:hover { background: var(--fem-light); }
+
+.srs-new-badge {
+  display: inline-block;
+  background: #7D3C98;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.srs-card-meta {
+  font-size: 0.8rem;
+  color: #999;
+  margin-top: 8px;
+}
+
+/* SRS Completion Overlay */
+.srs-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+.srs-overlay.hidden { display: none; }
+.srs-overlay-content {
+  background: #fff;
+  border-radius: 20px;
+  padding: 32px 24px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+}
+.srs-complete-stat {
+  font-size: 1.05rem;
+  margin: 8px 0;
+  color: var(--text);
+}
+.srs-complete-label {
+  color: #888;
+}
+
+/* SRS Queue Depth */
+.srs-queue-depth {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #aaa;
+  margin-bottom: 16px;
+}
+
+/* SRS Known Button */
+.srs-known-btn {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-family: inherit;
+  text-decoration: underline;
+  padding: 4px 0;
+}
+.srs-known-btn:hover { color: #27AE60; }
+
+/* SRS Learning Badge */
+.srs-learning-badge {
+  display: inline-block;
+  background: #E67E22;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+/* Triage Screen */
+.triage-card {
+  min-height: 160px;
+}
+.triage-reveal {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-top: 8px;
+}
+.triage-buttons {
+  display: flex;
+  gap: 12px;
+}
+.triage-know {
+  background: #D5F5E3;
+  border-color: #27AE60;
+  color: #1E8449;
+}
+.triage-know:hover { box-shadow: 0 2px 12px rgba(39, 174, 96, 0.3); }
+.triage-test {
+  background: #F2F3F4;
+  border-color: #BDC3C7;
+  color: #555;
+}
+.triage-test:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.1); }
+.triage-hint {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #aaa;
+  margin-top: 16px;
+}
