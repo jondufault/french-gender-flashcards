@@ -397,6 +397,11 @@
     var sessionFails = (entry && entry.sessionFails) || 0;
     var consecCorrect = (entry && entry.consecCorrect) || 0;
 
+    // Debug trace (accessible via window._debugLog in console)
+    if (!window._debugLog) window._debugLog = [];
+    window._debugLog.push({word: word, correct: correct, wasReview: !!(entry && !entry.isNew && entry.step === undefined && !entry.sessionFails && entry.overdue !== undefined), isLearning: isLearning, consecCorrect: consecCorrect, entryKeys: Object.keys(entry || {})});
+
+
     stats.total++;
     if (correct) stats.correct++;
     queue.cardsSeen++;
@@ -414,6 +419,7 @@
           // Graduate! Set up between-session scheduling
           sm2Update(card, true);
           saveState(state);
+          return { graduated: true };
         } else {
           // Not enough consecutive corrects yet — keep in learning
           var gap = Math.max(4, 6 - sessionFails); // wider gap when doing well
@@ -425,6 +431,7 @@
             consecCorrect: consecCorrect
           });
           saveState(state);
+          return { remaining: needed - consecCorrect };
         }
       } else {
         // Wrong — escalate
@@ -444,8 +451,10 @@
           consecCorrect: 0
         });
         saveState(state);
+        return { remaining: needed };
       }
     }
+    return { graduated: true };
   }
 
   // ============================================
@@ -624,7 +633,7 @@
     var isCorrect = (choice === gender);
 
     // Process the answer through the queue
-    handleAnswer(wordIndex, isCorrect, entry);
+    var result = handleAnswer(wordIndex, isCorrect, entry);
 
     // Show answer card
     var qState = document.getElementById("srs-question-state");
@@ -645,36 +654,62 @@
 
     if (card) ensureCardFields(card);
 
-    // Frequency: what % of everyday French this word represents
-    var freqPct = (FREQ[wordIndex] * 100).toFixed(2);
-
-    // Your accuracy on this word
-    var accuracy = "";
-    if (card && card.history.length > 0) {
-      var right = 0;
-      for (var h = 0; h < card.history.length; h++) {
-        var entry = card.history[h];
-        if ((typeof entry === "object" && entry[1]) || entry === 5) right++;
+    // Mastery status
+    var mastery = "";
+    if (result && result.graduated) {
+      if (card && card.lastReview && card.interval > 0) {
+        mastery = "maîtrise: " + Math.round(retrievability(card) * 100) + "%";
+      } else {
+        mastery = "validé ✓";
       }
-      accuracy = right + "/" + card.history.length + " (" + Math.round(right / card.history.length * 100) + "%)";
+    } else if (result && result.remaining) {
+      mastery = "encore " + result.remaining + "× pour valider";
     }
 
-    // Next review info
-    var nextInfo = "";
-    if (card && card.interval > 0) {
-      nextInfo = "prochain: " + card.interval + "j";
+    // Last 5 attempts as visual streak
+    var streak = "";
+    if (card && card.history.length > 0) {
+      var recent = card.history.slice(-5);
+      var marks = [];
+      for (var h = 0; h < recent.length; h++) {
+        var e = recent[h];
+        var wasCorrect = (typeof e === "object" && e[1]) || e === 5;
+        marks.push(wasCorrect
+          ? '<span class="streak-hit">✓</span>'
+          : '<span class="streak-miss">✗</span>');
+      }
+      streak = marks.join(" ");
     }
 
-    var metaParts = ["#" + rank, freqPct + "% du français"];
-    if (accuracy) metaParts.push(accuracy);
-    if (nextInfo) metaParts.push(nextInfo);
+    // When you'll see it next — only for graduated cards
+    var nextDate = "";
+    if (card && card.lastReview && card.interval > 0 && card.nextReview) {
+      var nr = card.nextReview;
+      var today = todayStr();
+      if (nr <= today) {
+        nextDate = "prochain: aujourd'hui";
+      } else {
+        var daysUntil = daysBetween(today, nr);
+        if (daysUntil === 1) nextDate = "prochain: demain";
+        else nextDate = "prochain: " + daysUntil + "j (" + nr.slice(5) + ")";
+      }
+    }
+
+    var metaParts = ["#" + rank];
+    if (mastery) metaParts.push(mastery);
+    if (nextDate) metaParts.push(nextDate);
     if (card && card.errors >= 6) metaParts.push("⚠ difficile");
+
+    // Frequency weight (Zipf)
+    var freqPct = (FREQ[wordIndex] * 100).toFixed(2) + "% du français";
 
     var html =
       '<div class="feedback ' + feedbackClass + '">' + feedbackText + '</div>' +
       '<div class="answer-gender ' + genderColor + '">' + escapeHtml(displayArticle) + '</div>' +
       '<div class="answer-word">' + escapeHtml(word) + '</div>' +
-      '<div class="srs-card-meta">' + metaParts.join(" · ") + '</div>';
+      '<div class="srs-card-meta">' + metaParts.join(" · ") + '</div>' +
+      (streak ? '<div class="srs-card-streak">' + streak + '</div>' : '') +
+      '<div class="srs-card-freq">' + freqPct + '</div>';
 
     cardEl.innerHTML = html;
 
