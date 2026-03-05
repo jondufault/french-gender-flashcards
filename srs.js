@@ -197,9 +197,10 @@
     }
   }
 
+  // sm2Update only handles between-session scheduling (interval, EF, reps).
+  // History and error counting are handled by handleAnswer to avoid double-counting.
   function sm2Update(card, correct) {
     ensureCardFields(card);
-    card.history.push([Date.now(), correct]);
 
     if (correct) {
       if (card.reps === 0) {
@@ -210,10 +211,7 @@
         card.interval = Math.round(card.interval * card.ef);
       }
       card.reps++;
-      // EF recovery: nudge EF back up to prevent "ease hell"
-      card.ef = Math.min(card.ef + 0.05, 2.5);
     } else {
-      card.errors++;
       // Softer lapse penalty: 25% of old interval (min 1) instead of hard reset to 1
       var oldInterval = card.interval;
       card.interval = Math.max(1, Math.round(oldInterval * 0.25));
@@ -360,13 +358,14 @@
     return null;
   }
 
-  // How many consecutive corrects needed to graduate from learning, based on lifetime errors.
-  // More errors in the past → more proof needed now.
+  // How many consecutive corrects needed to graduate from learning.
+  // Base is 3 because a single correct on a 50/50 is meaningless (25% chance of fluking 2).
+  // Trouble words need even more proof.
   function correctsToGraduate(card) {
     ensureCardFields(card);
-    if (card.errors <= 1) return 1;  // minor stumble — 1 correct is enough
-    if (card.errors <= 3) return 2;  // pattern forming — need 2 in a row
-    return 3;                         // leech territory — need 3 in a row
+    if (card.errors <= 1) return 3;  // standard — 3 in a row (12.5% fluke chance)
+    if (card.errors <= 4) return 4;  // trouble word — 4 in a row
+    return 5;                         // leech — 5 in a row
   }
 
   // Within-session spacing: tightens with repeated fails in this session.
@@ -391,13 +390,17 @@
     if (correct) stats.correct++;
     queue.cardsSeen++;
 
+    // Record every answer in history (single source of truth)
+    card.history.push([Date.now(), correct]);
+    if (!correct) card.errors++;
+
     if (isLearning) {
       var needed = correctsToGraduate(card);
 
       if (correct) {
         consecCorrect++;
         if (consecCorrect >= needed) {
-          // Graduate! Record in SM-2 for between-session scheduling
+          // Graduate! Set up between-session scheduling
           sm2Update(card, true);
           saveState(state);
         } else {
@@ -410,6 +413,7 @@
             sessionFails: sessionFails,
             consecCorrect: consecCorrect
           });
+          saveState(state);
         }
       } else {
         // Wrong — escalate
@@ -423,9 +427,6 @@
           sessionFails: sessionFails,
           consecCorrect: 0
         });
-        // Record the error in history (but don't update SM-2 interval yet)
-        card.history.push([Date.now(), false]);
-        card.errors++;
         saveState(state);
       }
     } else {
