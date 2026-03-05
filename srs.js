@@ -286,6 +286,16 @@
     newThisSession: 0
   };
 
+  // Session ID — generated fresh each session for analytics reconstruction
+  var sessionId = null;
+
+  function newSessionId() {
+    return Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+  }
+
+  // Timestamp when the current card was shown (for response time)
+  var cardShownAt = null;
+
   // Session stats
   var stats = { correct: 0, total: 0, newCount: 0 };
 
@@ -294,6 +304,7 @@
   }
 
   function initQueue() {
+    sessionId = newSessionId();
     var today = todayStr();
     var reviews = [];
 
@@ -417,7 +428,9 @@
     queue.cardsSeen++;
 
     // Record every answer in history (single source of truth)
-    card.history.push([Date.now(), correct]);
+    // Format: [timestamp, correct, responseMs, sessionId]
+    var responseMs = cardShownAt ? Date.now() - cardShownAt : null;
+    card.history.push([Date.now(), correct, responseMs, sessionId]);
     if (!correct) card.errors++;
 
     if (isLearning) {
@@ -584,6 +597,7 @@
       return;
     }
     currentEntry = entry;
+    cardShownAt = Date.now();
 
     hideAllScreens();
     srsPractice.classList.add("active");
@@ -809,7 +823,8 @@
       card.interval = 1;
       card.nextReview = todayStr();
       card.errors += 2; // treat as 2 errors so it needs more consecutive corrects
-      card.history.push([Date.now(), false]); // record as a miss
+      var responseMs = cardShownAt ? Date.now() - cardShownAt : null;
+      card.history.push([Date.now(), false, responseMs, sessionId]); // record as a miss
       saveState(state);
     }
     // Enter learning queue with elevated sessionFails for tight spacing
