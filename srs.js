@@ -382,6 +382,17 @@
     ensureCardFields(card);
     var isLearning = entry && (entry.isNew || entry.step !== undefined);
 
+    // All cards go through the learning gate (3+ consecutive corrects).
+    // The cost of 2 extra questions is low; the cost of a false graduation is 6+ days.
+    var wasReview = !isLearning;
+    if (!isLearning) {
+      isLearning = true;
+      if (!entry) entry = {};
+      entry.step = 0;
+      entry.sessionFails = 0;
+      entry.consecCorrect = 0;
+    }
+
     // Carry forward session-level fail count and consecutive correct count
     var sessionFails = (entry && entry.sessionFails) || 0;
     var consecCorrect = (entry && entry.consecCorrect) || 0;
@@ -419,6 +430,11 @@
         // Wrong — escalate
         sessionFails++;
         consecCorrect = 0;
+        // If this was the first answer on a returning review card, register the lapse
+        // in SM-2 so the interval and EF get penalized immediately.
+        if (wasReview) {
+          sm2Update(card, false);
+        }
         var gap = learningGap(sessionFails);
         queue.learning.push({
           index: wordIndex,
@@ -428,21 +444,6 @@
           consecCorrect: 0
         });
         saveState(state);
-      }
-    } else {
-      // Regular review card (already graduated, coming back from between-session interval)
-      sm2Update(card, correct);
-      saveState(state);
-      if (!correct) {
-        // Failed a review — enter learning queue with harsh escalation.
-        // One miss after recovery = immediate re-escalation.
-        queue.learning.push({
-          index: wordIndex,
-          showAfter: queue.cardsSeen + 3,
-          step: 0,
-          sessionFails: 1,
-          consecCorrect: 0
-        });
       }
     }
   }
