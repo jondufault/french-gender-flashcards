@@ -184,12 +184,13 @@
   // ============================================
 
   function initCard() {
-    return { ef: 2.5, interval: 0, reps: 0, nextReview: todayStr(), lastReview: null, history: [], errors: 0 };
+    return { ef: 2.5, interval: 0, reps: 0, nextReview: todayStr(), lastReview: null, history: [], errors: 0, consecCorrect: 0 };
   }
 
   // Backfill old cards that lack newer fields
   function ensureCardFields(card) {
     if (!card.errors) card.errors = 0;
+    if (card.consecCorrect === undefined) card.consecCorrect = 0;
     if (!card.history) card.history = [];
     // Migrate old-format history (plain numbers) to timestamped
     if (card.history.length > 0 && typeof card.history[0] === "number") {
@@ -218,10 +219,11 @@
       card.reps = 0;
     }
 
-    // Standard SM-2 EF adjustment
+    // Standard SM-2 EF adjustment (capped at 2.5)
     var q = correct ? 5 : 1;
     card.ef = card.ef + (0.1 - (5 - q) * (0.08 + (5 - q) * 0.02));
     if (card.ef < 1.3) card.ef = 1.3;
+    if (card.ef > 2.5) card.ef = 2.5;
 
     card.lastReview = todayStr();
     card.nextReview = addDays(todayStr(), card.interval);
@@ -393,13 +395,21 @@
       entry.consecCorrect = 0;
     }
 
-    // Carry forward session-level fail count and consecutive correct count
+    // Carry forward session-level fail count
     var sessionFails = (entry && entry.sessionFails) || 0;
-    var consecCorrect = (entry && entry.consecCorrect) || 0;
-
-    // Debug trace (accessible via window._debugLog in console)
-    if (!window._debugLog) window._debugLog = [];
-    window._debugLog.push({word: word, correct: correct, wasReview: !!(entry && !entry.isNew && entry.step === undefined && !entry.sessionFails && entry.overdue !== undefined), isLearning: isLearning, consecCorrect: consecCorrect, entryKeys: Object.keys(entry || {})});
+    // consecCorrect lives on the card — but reset if 1+ days have passed
+    // (a gap means real forgetting-curve decay; the old streak is stale)
+    var consecCorrect = card.consecCorrect || 0;
+    if (consecCorrect > 0 && card.history.length > 0) {
+      var lastEntry = card.history[card.history.length - 1];
+      if (typeof lastEntry === "object" && lastEntry[0]) {
+        var msSince = Date.now() - lastEntry[0];
+        if (msSince > 86400000) { // more than 24 hours
+          consecCorrect = 0;
+          card.consecCorrect = 0;
+        }
+      }
+    }
 
 
     stats.total++;
@@ -415,8 +425,10 @@
 
       if (correct) {
         consecCorrect++;
+        card.consecCorrect = consecCorrect;
         if (consecCorrect >= needed) {
           // Graduate! Set up between-session scheduling
+          card.consecCorrect = 0; // reset for next review cycle
           sm2Update(card, true);
           saveState(state);
           return { graduated: true };
@@ -427,16 +439,16 @@
             index: wordIndex,
             showAfter: queue.cardsSeen + gap,
             step: 1,
-            sessionFails: sessionFails,
-            consecCorrect: consecCorrect
+            sessionFails: sessionFails
           });
           saveState(state);
           return { remaining: needed - consecCorrect };
         }
       } else {
-        // Wrong — escalate
-        sessionFails++;
+        // Wrong — reset consecutive streak
         consecCorrect = 0;
+        card.consecCorrect = 0;
+        sessionFails++;
         // If this was the first answer on a returning review card, register the lapse
         // in SM-2 so the interval and EF get penalized immediately.
         if (wasReview) {
@@ -447,8 +459,7 @@
           index: wordIndex,
           showAfter: queue.cardsSeen + gap,
           step: 0,
-          sessionFails: sessionFails,
-          consecCorrect: 0
+          sessionFails: sessionFails
         });
         saveState(state);
         return { remaining: needed };
@@ -703,13 +714,17 @@
     // Frequency weight (Zipf)
     var freqPct = (FREQ[wordIndex] * 100).toFixed(2) + "% du français";
 
+    // Bottom-right detail line: streak + status
+    var detailParts = [];
+    if (streak) detailParts.push(streak);
+
     var html =
       '<div class="feedback ' + feedbackClass + '">' + feedbackText + '</div>' +
       '<div class="answer-gender ' + genderColor + '">' + escapeHtml(displayArticle) + '</div>' +
       '<div class="answer-word">' + escapeHtml(word) + '</div>' +
       '<div class="srs-card-meta">' + metaParts.join(" · ") + '</div>' +
-      (streak ? '<div class="srs-card-streak">' + streak + '</div>' : '') +
-      '<div class="srs-card-freq">' + freqPct + '</div>';
+      '<div class="srs-card-freq">' + freqPct + '</div>' +
+      (detailParts.length ? '<div class="srs-card-detail">' + detailParts.join(" · ") + '</div>' : '');
 
     cardEl.innerHTML = html;
 
