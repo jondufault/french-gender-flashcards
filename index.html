@@ -33,7 +33,7 @@
       </button>
 
       <button class="menu-card srs-menu-card" onclick="startSRS()">
-        <span class="menu-card-title">SRS — 500 Noms</span>
+        <span class="menu-card-title">SRS — 1000 Noms</span>
         <span class="menu-card-desc">répétition espacée · le ou la ?</span>
         <span class="menu-card-progress" id="srs-progress">0 mots · 50.0% couverture</span>
       </button>
@@ -85,7 +85,7 @@
   <div id="srs-dashboard" class="screen">
     <div class="practice-header">
       <button class="back-btn" onclick="srsBackToMenu()">&larr; Menu</button>
-      <span class="card-counter">SRS — 500 Noms</span>
+      <span class="card-counter">SRS — 1000 Noms</span>
     </div>
 
     <div class="srs-score-section">
@@ -142,24 +142,14 @@
     </div>
   </div>
 
-  <!-- SRS TRIAGE — bulk mark words you already know -->
+  <!-- SRS WORD LIST — tap or swipe right to mark as known -->
   <div id="srs-triage" class="screen">
     <div class="practice-header">
       <button class="back-btn" onclick="srsTriageBack()">&larr; Dashboard</button>
       <span class="card-counter" id="triage-counter"></span>
     </div>
-
-    <div class="card triage-card">
-      <div class="word" id="triage-word"></div>
-      <div id="triage-reveal" class="triage-reveal hidden"></div>
-    </div>
-
-    <div class="triage-buttons" id="triage-buttons">
-      <button class="answer-btn triage-know" onclick="srsTriageKnow()">Je sais</button>
-      <button class="answer-btn triage-test" onclick="srsTriageTest()">À tester</button>
-    </div>
-
-    <div class="triage-hint">Marquez les mots dont vous connaissez le genre sans hésiter.</div>
+    <div class="triage-hint">Appuyez ou glissez &rarr; pour marquer comme acquis. Appuyez à nouveau pour annuler.</div>
+    <div class="triage-list" id="triage-list"></div>
   </div>
 
   <!-- SRS PRACTICE (continuous) -->
@@ -176,9 +166,12 @@
     </div>
 
     <div id="srs-answer-state" class="hidden">
+      <div class="srs-card-top-actions">
+        <button class="srs-known-btn" onclick="srsMarkKnown()">Acquis</button>
+        <button class="srs-shaky-btn" onclick="srsMarkShaky()">Fragile</button>
+      </div>
       <div class="card" id="srs-card-answer"></div>
-      <div class="answer-footer">
-        <button class="srs-known-btn" onclick="srsMarkKnown()">Acquis — ne plus tester</button>
+      <div class="srs-answer-actions">
         <button class="next-btn" onclick="srsNext()">Suivant &rarr;</button>
       </div>
     </div>

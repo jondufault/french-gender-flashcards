@@ -7,8 +7,8 @@
 :root {
   --masc: #1A5276;
   --masc-light: #D6EAF8;
-  --fem: #922B21;
-  --fem-light: #FADBD8;
+  --fem: #7B2D8E;
+  --fem-light: #E8D0F0;
   --gray-bg: #F2F3F4;
   --text: #2C3E50;
   --correct-bg: #D5F5E3;
@@ -283,7 +283,7 @@ h1 {
 }
 
 .answer-btn.fem:hover, .answer-btn.fem:focus {
-  box-shadow: 0 2px 12px rgba(146, 43, 33, 0.3);
+  box-shadow: 0 2px 12px rgba(123, 45, 142, 0.3);
   outline: none;
 }
 
@@ -560,18 +560,30 @@ h1 {
   margin-bottom: 16px;
 }
 
-/* SRS Known Button */
-.srs-known-btn {
+/* SRS Answer Actions */
+.srs-card-top-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.srs-answer-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.srs-known-btn, .srs-shaky-btn {
   background: none;
-  border: none;
+  border: 1px solid #ddd;
+  border-radius: 8px;
   color: #999;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   cursor: pointer;
   font-family: inherit;
-  text-decoration: underline;
-  padding: 4px 0;
+  padding: 5px 10px;
 }
-.srs-known-btn:hover { color: #27AE60; }
+.srs-known-btn:hover { color: #27AE60; border-color: #27AE60; }
+.srs-shaky-btn:hover { color: #E67E22; border-color: #E67E22; }
 
 /* SRS Learning Badge */
 .srs-learning-badge {
@@ -587,34 +599,66 @@ h1 {
   margin-bottom: 8px;
 }
 
-/* Triage Screen */
-.triage-card {
-  min-height: 160px;
-}
-.triage-reveal {
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin-top: 8px;
-}
-.triage-buttons {
-  display: flex;
-  gap: 12px;
-}
-.triage-know {
-  background: #D5F5E3;
-  border-color: #27AE60;
-  color: #1E8449;
-}
-.triage-know:hover { box-shadow: 0 2px 12px rgba(39, 174, 96, 0.3); }
-.triage-test {
-  background: #F2F3F4;
-  border-color: #BDC3C7;
-  color: #555;
-}
-.triage-test:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.1); }
+/* Word List / Triage */
 .triage-hint {
   text-align: center;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: #aaa;
-  margin-top: 16px;
+  margin-bottom: 12px;
+}
+.triage-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.triage-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.15s, opacity 0.15s, background 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.triage-row:active {
+  background: #f0f0f0;
+}
+.triage-row.triage-known {
+  background: #D5F5E3;
+  border-color: #A9DFBF;
+}
+.triage-rank {
+  font-size: 0.75rem;
+  color: #bbb;
+  min-width: 32px;
+  text-align: right;
+}
+.triage-word-text {
+  flex: 1;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.triage-prob {
+  font-size: 0.8rem;
+  font-weight: 700;
+  min-width: 36px;
+  text-align: right;
+}
+.prob-high { color: #27AE60; }
+.prob-mid { color: #E67E22; }
+.prob-low { color: #BDC3C7; }
+.triage-gender {
+  font-size: 0.85rem;
+  font-weight: 600;
+  min-width: 30px;
+}
+.triage-check {
+  color: #27AE60;
+  font-weight: 700;
+  font-size: 1.1rem;
 }

@@ -312,10 +312,13 @@
     return arr;
   }
 
-  function showScreen(screen) {
+  function showScreen(screen, hash) {
     var all = document.querySelectorAll(".screen");
     for (var i = 0; i < all.length; i++) all[i].classList.remove("active");
     screen.classList.add("active");
+    if (hash && location.hash !== "#" + hash) {
+      location.hash = hash;
+    }
   }
 
   // ============================================
@@ -355,12 +358,12 @@
     }
 
     shuffle(deck);
-    showScreen(practiceScreen);
+    showScreen(practiceScreen, "practice-" + mode);
     showQuestion();
   };
 
   window.goToMenu = function () {
-    showScreen(menuScreen);
+    showScreen(menuScreen, "");
     updateMenuProgress();
   };
 
@@ -574,7 +577,7 @@
 
   function showComplete(msg) {
     completeMsg.textContent = msg;
-    showScreen(completeScreen);
+    showScreen(completeScreen, "complete");
   }
 
   // ============================================
@@ -582,4 +585,41 @@
   // ============================================
 
   updateMenuProgress();
+
+  // ============================================
+  // HASH ROUTER
+  // ============================================
+
+  // Make showScreen available globally for srs.js
+  window._showScreen = showScreen;
+  window._menuScreen = menuScreen;
+
+  function handleHash() {
+    var hash = location.hash.replace("#", "");
+    if (!hash) return; // stay on menu
+    if (hash === "srs") { window.startSRS && window.startSRS(); return; }
+    if (hash === "srs-triage") { window.srsStartTriage && window.srsStartTriage(); return; }
+    if (hash === "srs-practice") { window.srsStartSession && window.srsStartSession(); return; }
+    if (hash.indexOf("practice-") === 0) {
+      var mode = hash.replace("practice-", "");
+      if (mode === "nouns" || mode === "endings" || mode === "verbs") {
+        window.startMode(mode);
+      }
+      return;
+    }
+  }
+
+  // Route on initial load
+  handleHash();
+
+  // Handle browser back/forward
+  window.addEventListener("hashchange", function () {
+    var hash = location.hash.replace("#", "");
+    if (!hash) {
+      // Back to menu
+      showScreen(menuScreen, "");
+      updateMenuProgress();
+    }
+    // Don't auto-navigate forward on hashchange — just handle back-to-menu
+  });
 })();
