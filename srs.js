@@ -644,10 +644,30 @@
     cardEl.className = "card " + genderClass;
 
     if (card) ensureCardFields(card);
-    var metaParts = ["#" + rank];
-    if (card && card.interval > 0) metaParts.push("intervalle: " + card.interval + "j");
-    if (card && card.reps > 0) metaParts.push("série: " + card.reps);
-    if (card && card.errors >= 4) metaParts.push("erreurs: " + card.errors);
+
+    // Frequency: what % of everyday French this word represents
+    var freqPct = (FREQ[wordIndex] * 100).toFixed(2);
+
+    // Your accuracy on this word
+    var accuracy = "";
+    if (card && card.history.length > 0) {
+      var right = 0;
+      for (var h = 0; h < card.history.length; h++) {
+        var entry = card.history[h];
+        if ((typeof entry === "object" && entry[1]) || entry === 5) right++;
+      }
+      accuracy = right + "/" + card.history.length + " (" + Math.round(right / card.history.length * 100) + "%)";
+    }
+
+    // Next review info
+    var nextInfo = "";
+    if (card && card.interval > 0) {
+      nextInfo = "prochain: " + card.interval + "j";
+    }
+
+    var metaParts = ["#" + rank, freqPct + "% du français"];
+    if (accuracy) metaParts.push(accuracy);
+    if (nextInfo) metaParts.push(nextInfo);
     if (card && card.errors >= 6) metaParts.push("⚠ difficile");
 
     var html =
