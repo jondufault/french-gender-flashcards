@@ -593,6 +593,7 @@
   // Make showScreen available globally for srs.js
   window._showScreen = showScreen;
   window._menuScreen = menuScreen;
+  window._ENDINGS = ENDINGS;
 
   function handleHash() {
     var hash = location.hash.replace("#", "");

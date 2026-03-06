@@ -535,6 +535,105 @@
   }
 
   // ============================================
+  // ENDING RULE MATCHER
+  // ============================================
+
+  // Parse ending pattern like "-tion / -sion / -aison" into array of suffixes
+  function parseEndingSuffixes(endingStr) {
+    // Handle special case
+    if (endingStr.indexOf("cons. double") >= 0) return null; // special logic
+    if (endingStr.indexOf("consonne finale") >= 0) return null; // special logic
+    if (endingStr.indexOf("grec / latin") >= 0) return null; // special logic
+
+    var parts = endingStr.split("/");
+    var suffixes = [];
+    for (var i = 0; i < parts.length; i++) {
+      var s = parts[i].trim().replace(/^-/, "");
+      if (s) suffixes.push(s.toLowerCase());
+    }
+    return suffixes;
+  }
+
+  // Check if word ends with double consonant + e (like "terre", "femme")
+  function hasDoubleConsE(word) {
+    return /([^aeéèêëiîïoôuûùüâäæœ])\1e$/i.test(word);
+  }
+
+  // Check if word ends with a consonant (not counting silent e patterns)
+  function endsWithConsonant(word) {
+    return /[bcdfgjklmnpqrstvwxz]$/i.test(word);
+  }
+
+  // Check if a word is mentioned in the exceptions list
+  function isInExceptionList(word, exceptionsStr) {
+    if (!exceptionsStr || exceptionsStr === "(aucune)" || exceptionsStr === "(rare)") return false;
+    var lower = word.toLowerCase();
+    // Match "le X", "la X", "l'X", or bare "X"
+    var re = new RegExp("(?:^|[,;]\\s*)(?:le |la |l['''])" + lower.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + "(?:\\s|[,;(]|$)", "i");
+    if (re.test(exceptionsStr)) return true;
+    // Also check bare word
+    var re2 = new RegExp("(?:^|[,;]\\s*)" + lower.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + "(?:\\s|[,;(]|$)", "i");
+    return re2.test(exceptionsStr);
+  }
+
+  // Find which ending rule(s) apply to a word
+  function findEndingRule(word, gender) {
+    var endings = window._ENDINGS;
+    if (!endings) return null;
+
+    var lower = word.toLowerCase();
+    var matches = [];
+
+    for (var i = 0; i < endings.length; i++) {
+      var rule = endings[i];
+      var matched = false;
+
+      // Special rules
+      if (rule.ending.indexOf("cons. double") >= 0) {
+        matched = hasDoubleConsE(lower);
+      } else if (rule.ending.indexOf("consonne finale") >= 0) {
+        // "consonne finale" but exclude -tion/-sion/-aison
+        if (endsWithConsonant(lower) && !/(?:tion|sion|aison)$/i.test(lower)) {
+          matched = true;
+        }
+      } else if (rule.ending.indexOf("grec / latin") >= 0) {
+        // Greek/Latin words ending in -e like problème, système, thème
+        matched = /[èé]me$/i.test(lower);
+      } else {
+        var suffixes = parseEndingSuffixes(rule.ending);
+        if (suffixes) {
+          for (var j = 0; j < suffixes.length; j++) {
+            if (lower.length > suffixes[j].length && lower.slice(-suffixes[j].length) === suffixes[j]) {
+              matched = true;
+              break;
+            }
+          }
+        }
+      }
+
+      if (matched) {
+        var isException = isInExceptionList(word, rule.exceptions);
+        var follows = (rule.gender === gender);
+        matches.push({
+          rule: rule,
+          isException: isException,
+          follows: follows
+        });
+      }
+    }
+
+    // Prefer specific rules over broad ones (consonne finale is very broad)
+    if (matches.length > 1) {
+      var specific = matches.filter(function(m) {
+        return m.rule.ending.indexOf("consonne finale") < 0;
+      });
+      if (specific.length > 0) return specific[0];
+    }
+
+    return matches.length > 0 ? matches[0] : null;
+  }
+
+  // ============================================
   // SCREENS
   // ============================================
 
@@ -728,6 +827,19 @@
     // Frequency weight (Zipf)
     var freqPct = (FREQ[wordIndex] * 100).toFixed(2) + "% du français";
 
+    // Ending rule match
+    var ruleMatch = findEndingRule(word, gender);
+    var ruleHtml = "";
+    if (ruleMatch) {
+      if (ruleMatch.follows) {
+        ruleHtml = '<div class="srs-card-rule srs-rule-follows">règle : ' + escapeHtml(ruleMatch.rule.ending) + ' → ' + ruleMatch.rule.gender + '</div>';
+      } else {
+        ruleHtml = '<div class="srs-card-rule srs-rule-exception">⚠ exception à ' + escapeHtml(ruleMatch.rule.ending) + ' (' + ruleMatch.rule.gender + ')</div>';
+      }
+    } else {
+      ruleHtml = '<div class="srs-card-rule srs-rule-none">pas de règle connue</div>';
+    }
+
     // Bottom-right detail line: streak + status
     var detailParts = [];
     if (streak) detailParts.push(streak);
@@ -736,6 +848,7 @@
       '<div class="feedback ' + feedbackClass + '">' + feedbackText + '</div>' +
       '<div class="answer-gender ' + genderColor + '">' + escapeHtml(displayArticle) + '</div>' +
       '<div class="answer-word">' + escapeHtml(word) + '</div>' +
+      ruleHtml +
       '<div class="srs-card-meta">' + metaParts.join(" · ") + '</div>' +
       '<div class="srs-card-freq">' + freqPct + '</div>' +
       (detailParts.length ? '<div class="srs-card-detail">' + detailParts.join(" · ") + '</div>' : '');
