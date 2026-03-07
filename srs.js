@@ -389,6 +389,16 @@
     return 2;
   }
 
+  // Remove any existing learning queue entries for a word index.
+  // Prevents ghost re-shows when a card graduates or gets re-queued.
+  function removeLearningEntries(wordIndex) {
+    for (var i = queue.learning.length - 1; i >= 0; i--) {
+      if (queue.learning[i].index === wordIndex) {
+        queue.learning.splice(i, 1);
+      }
+    }
+  }
+
   function handleAnswer(wordIndex, correct, entry) {
     var word = W[wordIndex][0];
     var card = state.cards[word];
@@ -442,11 +452,13 @@
         if (consecCorrect >= needed) {
           // Graduate! Set up between-session scheduling
           card.consecCorrect = 0; // reset for next review cycle
+          removeLearningEntries(wordIndex); // prevent ghost re-shows
           sm2Update(card, true);
           saveState(state);
           return { graduated: true };
         } else {
           // Not enough consecutive corrects yet — keep in learning
+          removeLearningEntries(wordIndex);
           var gap = Math.max(4, 6 - sessionFails); // wider gap when doing well
           queue.learning.push({
             index: wordIndex,
@@ -467,6 +479,7 @@
         if (wasReview) {
           sm2Update(card, false);
         }
+        removeLearningEntries(wordIndex);
         var gap = learningGap(sessionFails);
         queue.learning.push({
           index: wordIndex,
@@ -545,7 +558,9 @@
     if (endingStr.indexOf("consonne finale") >= 0) return null; // special logic
     if (endingStr.indexOf("grec / latin") >= 0) return null; // special logic
 
-    var parts = endingStr.split("/");
+    // Strip parenthetical notes like "(pas -ment)"
+    var cleaned = endingStr.replace(/\s*\(.*?\)/g, "");
+    var parts = cleaned.split("/");
     var suffixes = [];
     for (var i = 0; i < parts.length; i++) {
       var s = parts[i].trim().replace(/^-/, "");
@@ -608,6 +623,10 @@
               break;
             }
           }
+        }
+        // "-ent (pas -ment)": exclude words ending in -ment
+        if (matched && rule.ending.indexOf("(pas -ment)") >= 0 && /ment$/i.test(lower)) {
+          matched = false;
         }
       }
 
@@ -941,6 +960,7 @@
       saveState(state);
     }
     // Enter learning queue with elevated sessionFails for tight spacing
+    removeLearningEntries(currentEntry.index);
     queue.learning.push({
       index: currentEntry.index,
       showAfter: queue.cardsSeen + 2,
