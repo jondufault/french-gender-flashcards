@@ -699,3 +699,316 @@ h1 {
   font-weight: 700;
   font-size: 1.1rem;
 }
+
+/* ---- CONNECTEURS ---- */
+
+.conn-menu-card {
+  border-color: #16A085;
+  background: linear-gradient(135deg, #E8F8F5, #FDFEFE);
+}
+.conn-menu-card:hover, .conn-menu-card:focus {
+  border-color: #138D75;
+  box-shadow: 0 2px 12px rgba(22, 160, 133, 0.2);
+}
+
+.conn-tier-section {
+  text-align: center;
+  padding: 20px 0 16px;
+}
+.conn-tier-label {
+  font-size: 0.85rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
+.conn-tier-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.conn-tier-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  background: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #bbb;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+.conn-tier-btn.active {
+  border-color: #16A085;
+  color: #16A085;
+  background: #E8F8F5;
+}
+.conn-tier-btn:hover {
+  border-color: #16A085;
+}
+.conn-tier-count {
+  font-size: 0.85rem;
+  color: #999;
+  margin-top: 4px;
+}
+
+.conn-drills {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
+}
+.conn-drill-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: #fff;
+  border: 2px solid #16A085;
+  border-radius: 14px;
+  padding: 20px 16px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s, box-shadow 0.15s;
+  width: 100%;
+}
+.conn-drill-btn:hover {
+  background: #E8F8F5;
+  box-shadow: 0 2px 10px rgba(22, 160, 133, 0.15);
+}
+.conn-drill-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #16A085;
+}
+.conn-drill-desc {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+/* Connecteur practice card elements */
+.conn-mode-tag {
+  display: inline-block;
+  background: #16A085;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 10px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+.conn-cat-label {
+  font-size: 0.9rem;
+  color: #16A085;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.conn-trans-hint {
+  font-size: 0.95rem;
+  color: #888;
+  font-style: italic;
+}
+.conn-challenge {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-top: 8px;
+}
+.conn-subj-hint {
+  font-size: 0.85rem;
+  color: #E74C3C;
+  font-weight: 600;
+}
+
+/* Reveal button */
+.conn-reveal-btn {
+  display: block;
+  width: 100%;
+  padding: 18px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  background: #16A085;
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  font-family: inherit;
+}
+.conn-reveal-btn:hover { opacity: 0.9; }
+
+/* Connector list (answer) */
+.conn-card {
+  border-color: #16A085;
+  background: #F0FAF8;
+  text-align: left;
+  align-items: stretch;
+}
+.conn-answer-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #16A085;
+  text-align: center;
+  margin-bottom: 12px;
+}
+.conn-answer-count {
+  font-weight: 400;
+  color: #aaa;
+}
+.conn-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+.conn-row {
+  padding: 8px 10px;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+.conn-row-main {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 2px;
+}
+.conn-name {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text);
+}
+.conn-subj {
+  font-size: 0.7rem;
+  color: #E74C3C;
+  font-weight: 700;
+  background: #FDE8E8;
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+.conn-row-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.conn-trans {
+  font-size: 0.85rem;
+  color: #666;
+  font-style: italic;
+}
+.conn-reg {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.conn-reg-informal { color: #E67E22; background: #FEF5E7; }
+.conn-reg-neutral { color: #2E86C1; background: #EBF5FB; }
+.conn-reg-formal { color: #7D3C98; background: #F4ECF7; }
+.conn-reg-literary { color: #935116; background: #FAF0E6; }
+
+/* Recognize mode: category grid */
+.conn-cat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.conn-cat-opt {
+  background: #E8F8F5;
+  border: 2px solid #16A085;
+  color: #16A085;
+  border-radius: 12px;
+  padding: 14px 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-height: 70px;
+  justify-content: center;
+}
+.conn-cat-opt:hover {
+  background: #D1F2EB;
+  box-shadow: 0 2px 8px rgba(22, 160, 133, 0.2);
+}
+.conn-cat-opt:active { transform: scale(0.97); }
+.conn-cat-opt-desc {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #888;
+}
+
+/* Recognize answer details */
+.conn-detail-cats {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #16A085;
+  margin-top: 2px;
+}
+.conn-detail-trans {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #555;
+  margin-top: 4px;
+}
+.conn-detail-reg {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-top: 4px;
+}
+.conn-detail-usage {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 8px;
+  line-height: 1.4;
+}
+.conn-detail-ex {
+  font-size: 0.95rem;
+  color: var(--text);
+  font-style: italic;
+  margin-top: 8px;
+  padding: 6px 10px;
+  background: #fff;
+  border-radius: 6px;
+  border-left: 3px solid #16A085;
+}
+.conn-detail-ex-en {
+  font-size: 0.85rem;
+  color: #888;
+  padding-left: 13px;
+  margin-top: 2px;
+}
+.conn-subj-badge {
+  display: inline-block;
+  color: #E74C3C;
+  font-weight: 700;
+  font-size: 0.8rem;
+  background: #FDE8E8;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-top: 6px;
+}
+.conn-alt-section {
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid #e0e0e0;
+}
+.conn-alt-label {
+  font-weight: 600;
+  color: #666;
+}

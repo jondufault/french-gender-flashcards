@@ -609,6 +609,10 @@
   function handleHash() {
     var hash = location.hash.replace("#", "");
     if (!hash) return; // stay on menu
+    if (hash === "connecteurs") { window.startConnecteurs && window.startConnecteurs(); return; }
+    if (hash === "conn-express") { window.connStartExpress && window.connStartExpress(); return; }
+    if (hash === "conn-vary") { window.connStartVary && window.connStartVary(); return; }
+    if (hash === "conn-recognize") { window.connStartRecognize && window.connStartRecognize(); return; }
     if (hash === "srs") { window.startSRS && window.startSRS(); return; }
     if (hash === "srs-triage") { window.srsStartTriage && window.srsStartTriage(); return; }
     if (hash === "srs-practice") { window.srsStartSession && window.srsStartSession(); return; }

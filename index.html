@@ -32,6 +32,12 @@
         <span class="menu-card-progress" id="verbs-progress">0 / 91 maîtrisés</span>
       </button>
 
+      <button class="menu-card conn-menu-card" onclick="startConnecteurs()">
+        <span class="menu-card-title">Connecteurs logiques</span>
+        <span class="menu-card-desc">exprimer · varier · reconnaître</span>
+        <span class="menu-card-progress" id="conn-progress">0 / 0 maîtrisés</span>
+      </button>
+
       <button class="menu-card srs-menu-card" onclick="startSRS()">
         <span class="menu-card-title">SRS — 1000 Noms</span>
         <span class="menu-card-desc">répétition espacée · le ou la ?</span>
@@ -177,7 +183,66 @@
     </div>
   </div>
 
+  <!-- Connecteurs Dashboard -->
+  <div id="conn-dashboard" class="screen">
+    <div class="practice-header">
+      <button class="back-btn" onclick="connBackToMenu()">&larr; Menu</button>
+      <span class="card-counter">Connecteurs logiques</span>
+    </div>
+
+    <div class="conn-tier-section">
+      <div class="conn-tier-label">Niveaux</div>
+      <div class="conn-tier-buttons">
+        <button class="conn-tier-btn active" data-tier="1" onclick="connToggleTier(1)">1</button>
+        <button class="conn-tier-btn active" data-tier="2" onclick="connToggleTier(2)">2</button>
+        <button class="conn-tier-btn" data-tier="3" onclick="connToggleTier(3)">3</button>
+        <button class="conn-tier-btn" data-tier="4" onclick="connToggleTier(4)">4</button>
+      </div>
+      <div class="conn-tier-count" id="conn-tier-count">chargement...</div>
+    </div>
+
+    <div class="conn-drills">
+      <button class="conn-drill-btn" onclick="connStartExpress()">
+        <span class="conn-drill-title">Exprimer</span>
+        <span class="conn-drill-desc">Catégorie &rarr; trouver des connecteurs</span>
+      </button>
+      <button class="conn-drill-btn" onclick="connStartVary()">
+        <span class="conn-drill-title">Varier</span>
+        <span class="conn-drill-desc">Connecteur connu &rarr; dire autrement</span>
+      </button>
+      <button class="conn-drill-btn" onclick="connStartRecognize()">
+        <span class="conn-drill-title">Reconnaître</span>
+        <span class="conn-drill-desc">Connecteur &rarr; identifier la fonction</span>
+      </button>
+    </div>
+
+    <button class="reset-btn" onclick="connResetConfirm()" style="margin-top:20px">Réinitialiser connecteurs</button>
+  </div>
+
+  <!-- Connecteurs Practice -->
+  <div id="conn-practice" class="screen">
+    <div class="practice-header">
+      <button class="back-btn" onclick="connBackToDash()">&larr; Retour</button>
+      <span class="card-counter" id="conn-counter"></span>
+    </div>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="conn-progress-bar"></div>
+    </div>
+
+    <div id="conn-question">
+      <div class="card" id="conn-card-prompt"></div>
+      <div id="conn-answer-area"></div>
+    </div>
+
+    <div id="conn-answer" class="hidden">
+      <div class="card" id="conn-card-answer"></div>
+      <div class="answer-footer" id="conn-footer"></div>
+    </div>
+  </div>
+
   <script src="app.js"></script>
   <script src="srs.js"></script>
+  <script src="connecteurs-data.js"></script>
+  <script src="connecteurs.js"></script>
 </body>
 </html>
