@@ -32,6 +32,12 @@
         <span class="menu-card-progress" id="verbs-progress">0 / 91 maîtrisés</span>
       </button>
 
+      <button class="menu-card vp-menu-card" onclick="startVerbesPrep()">
+        <span class="menu-card-title">Verbes + Prépositions</span>
+        <span class="menu-card-desc">phrases à trous · 180 verbes</span>
+        <span class="menu-card-progress" id="vp-progress">0 / 0 maîtrisées</span>
+      </button>
+
       <button class="menu-card conn-menu-card" onclick="startConnecteurs()">
         <span class="menu-card-title">Connecteurs logiques</span>
         <span class="menu-card-desc">exprimer · varier · reconnaître</span>
@@ -240,8 +246,55 @@
     </div>
   </div>
 
+  <!-- Verbes + Prépositions Dashboard -->
+  <div id="vp-dashboard" class="screen">
+    <div class="practice-header">
+      <button class="back-btn" onclick="vpBackToMenu()">&larr; Menu</button>
+      <span class="card-counter">Verbes + Prépositions</span>
+    </div>
+
+    <div class="conn-tier-section">
+      <div class="conn-tier-label">Fréquence</div>
+      <div class="conn-tier-buttons">
+        <button class="vp-tier-btn active" data-tier="1" onclick="vpToggleTier(1)">1</button>
+        <button class="vp-tier-btn active" data-tier="2" onclick="vpToggleTier(2)">2</button>
+        <button class="vp-tier-btn" data-tier="3" onclick="vpToggleTier(3)">3</button>
+        <button class="vp-tier-btn" data-tier="4" onclick="vpToggleTier(4)">4</button>
+      </div>
+      <div class="conn-tier-count" id="vp-tier-count">chargement...</div>
+      <div class="vp-verb-count-line" id="vp-verb-count"></div>
+    </div>
+
+    <button class="vp-start-btn" onclick="vpStartPractice()">Commencer</button>
+
+    <button class="reset-btn" onclick="vpResetConfirm()" style="margin-top:20px">Réinitialiser</button>
+  </div>
+
+  <!-- Verbes + Prépositions Practice -->
+  <div id="vp-practice" class="screen">
+    <div class="practice-header">
+      <button class="back-btn" onclick="vpBackToDash()">&larr; Retour</button>
+      <span class="card-counter" id="vp-counter"></span>
+    </div>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="vp-progress-bar"></div>
+    </div>
+
+    <div id="vp-question">
+      <div class="card" id="vp-card-prompt"></div>
+      <div id="vp-answer-area"></div>
+    </div>
+
+    <div id="vp-answer" class="hidden">
+      <div class="card" id="vp-card-answer"></div>
+      <div class="answer-footer" id="vp-footer"></div>
+    </div>
+  </div>
+
   <script src="app.js"></script>
   <script src="srs.js"></script>
+  <script src="verbes-prep-data.js"></script>
+  <script src="verbes-prep.js"></script>
   <script src="connecteurs-data.js"></script>
   <script src="connecteurs.js"></script>
 </body>

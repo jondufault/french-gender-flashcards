@@ -1,0 +1,1262 @@
+[
+  {
+    "verb": "s'abstenir",
+    "qqch": "de qqch",
+    "qqn": "",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "accepter",
+    "qqch": "qqch",
+    "qqn": "",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "acheter",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "s'adapter",
+    "qqch": "à qqch",
+    "qqn": "à qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "adresser",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "s'adresser",
+    "qqch": "",
+    "qqn": "à qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "aider",
+    "qqch": "",
+    "qqn": "qqn",
+    "infinitif": "à faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "aimer",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "aller",
+    "qqch": "",
+    "qqn": "",
+    "infinitif": "faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "s'amuser",
+    "qqch": "à qqch",
+    "qqn": "",
+    "infinitif": "à faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "annoncer",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "apercevoir",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "s'apercevoir",
+    "qqch": "de qqch",
+    "qqn": "",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "appeler",
+    "qqch": "",
+    "qqn": "qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "s'appliquer",
+    "qqch": "à qqch",
+    "qqn": "",
+    "infinitif": "à faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "apporter",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "apprendre",
+    "qqch": "qqch",
+    "qqn": "à qqn\nde qqn",
+    "infinitif": "à faire qqch",
+    "remarques": "… à l'élève\n… du professeur"
+  },
+  {
+    "verb": "arrêter",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "s'arrêter",
+    "qqch": "",
+    "qqn": "",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "attendre",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "s'attendre",
+    "qqch": "à qqch",
+    "qqn": "",
+    "infinitif": "à faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "avoir",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "à faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "blesser",
+    "qqch": "",
+    "qqn": "qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "brosser",
+    "qqch": "qqch",
+    "qqn": "de qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "cacher",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "",
+    "remarques": "mais on cache qqn"
+  },
+  {
+    "verb": "cesser",
+    "qqch": "qqch",
+    "qqn": "",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "chanter",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "chercher",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "à faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "choisir",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "commencer",
+    "qqch": "qqch",
+    "qqn": "",
+    "infinitif": "à faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "confirmer",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "conseiller",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "continuer",
+    "qqch": "qqch",
+    "qqn": "",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "contribuer",
+    "qqch": "",
+    "qqn": "",
+    "infinitif": "à faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "convaincre",
+    "qqch": "",
+    "qqn": "qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "craindre",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "critiquer",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "croire",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "décider",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "à faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "se décider",
+    "qqch": "",
+    "qqn": "",
+    "infinitif": "à faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "demander",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "de faire qqch",
+    "remarques": "mais je demande à faire qqch."
+  },
+  {
+    "verb": "dépendre",
+    "qqch": "de qqch",
+    "qqn": "de qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "désirer",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "détester",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "devenir",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "devoir",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "dire",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "donner",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "à faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "écrire",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "écouter",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "empêcher",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "emprunter",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "encourager",
+    "qqch": "",
+    "qqn": "qqn",
+    "infinitif": "à faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "s'ennuyer",
+    "qqch": "de qqch",
+    "qqn": "de qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "enseigner",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "à faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "entendre",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "entendre parler",
+    "qqch": "de qqch",
+    "qqn": "de qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "envoyer",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "espérer",
+    "qqch": "qqch",
+    "qqn": "de qqn",
+    "infinitif": "faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "essayer",
+    "qqch": "qqch",
+    "qqn": "",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "éviter",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "excuser",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "s'excuser",
+    "qqch": "de qqch",
+    "qqn": "",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "exiger",
+    "qqch": "qqch",
+    "qqn": "de qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "expliquer",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "faire",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "falloir",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "se fatiguer",
+    "qqch": "de qqch",
+    "qqn": "de qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "féliciter",
+    "qqch": "de qqch",
+    "qqn": "qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "se fier",
+    "qqch": "",
+    "qqn": "à qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "finir",
+    "qqch": "qqch",
+    "qqn": "",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "habituer",
+    "qqch": "",
+    "qqn": "qqn",
+    "infinitif": "à faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "s'habituer",
+    "qqch": "à qqch",
+    "qqn": "à qqn",
+    "infinitif": "à faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "hésiter",
+    "qqch": "",
+    "qqn": "",
+    "infinitif": "à faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "interdire",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "s'intéresser",
+    "qqch": "à qqch",
+    "qqn": "à qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "inviter",
+    "qqch": "",
+    "qqn": "qqn",
+    "infinitif": "à faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "jouer",
+    "qqch": "à qqch\nde qqch",
+    "qqn": "",
+    "infinitif": "à faire qqch",
+    "remarques": "… à un sport\n…de la musique"
+  },
+  {
+    "verb": "laisser",
+    "qqch": "qqch",
+    "qqn": "à qqn\nqqn",
+    "infinitif": "faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "lire",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "louer",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "manquer",
+    "qqch": "qqch\nde qqch",
+    "qqn": "qqn\nà qqn",
+    "infinitif": "de faire qqch",
+    "remarques": "de = manque\nà = sentiments"
+  },
+  {
+    "verb": "se méfier",
+    "qqch": "de qqch",
+    "qqn": "de qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "menacer",
+    "qqch": "",
+    "qqn": "qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "mériter",
+    "qqch": "qqch",
+    "qqn": "",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "mettre du temps",
+    "qqch": "",
+    "qqn": "",
+    "infinitif": "à faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "se mettre",
+    "qqch": "à qqch",
+    "qqn": "",
+    "infinitif": "à faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "montrer",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "négliger",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "obliger",
+    "qqch": "",
+    "qqn": "qqn",
+    "infinitif": "à faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "obtenir",
+    "qqch": "qqch",
+    "qqn": "de qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "s'occuper",
+    "qqch": "de qqch",
+    "qqn": "de qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "offrir",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "",
+    "remarques": "mais on offre à qqn\nde faire qqch"
+  },
+  {
+    "verb": "s'opposer",
+    "qqch": "à qqch",
+    "qqn": "à qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "oser",
+    "qqch": "",
+    "qqn": "",
+    "infinitif": "faire qqch",
+    "remarques": "mais on ose faire qqch à qqn"
+  },
+  {
+    "verb": "oublier",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "parler",
+    "qqch": "de qqch",
+    "qqn": "à qqn\nde qqn",
+    "infinitif": "de faire qqch",
+    "remarques": "… de qqn d'absent"
+  },
+  {
+    "verb": "pardonner",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "passer",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "payer",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "",
+    "remarques": "mais payer qqch à qqn"
+  },
+  {
+    "verb": "penser",
+    "qqch": "à qqch\nqqch",
+    "qqn": "à qqn\nde qqn",
+    "infinitif": "à faire qqch",
+    "remarques": "de = opinion, idée"
+  },
+  {
+    "verb": "perdre",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "perdre du temps",
+    "qqch": "à qqch",
+    "qqn": "avec qqn",
+    "infinitif": "à faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "permettre",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "persuader",
+    "qqch": "",
+    "qqn": "qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "se plaindre",
+    "qqch": "de qqch",
+    "qqn": "de qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "porter",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "pouvoir",
+    "qqch": "",
+    "qqn": "",
+    "infinitif": "faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "préférer",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "prendre",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "prendre plaisir",
+    "qqch": "",
+    "qqn": "",
+    "infinitif": "à faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "prendre soin",
+    "qqch": "de qqch",
+    "qqn": "de qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "se préparer",
+    "qqch": "à qqch",
+    "qqn": "",
+    "infinitif": "à faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "présenter",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "promettre",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "proposer",
+    "qqch": "qqch",
+    "qqn": "à qqn\nqqn",
+    "infinitif": "de faire qqch",
+    "remarques": "qqn = suggérer"
+  },
+  {
+    "verb": "raconter",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "rappeler",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "se rappeler",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "recevoir",
+    "qqch": "qqch",
+    "qqn": "de qqn\nqqn",
+    "infinitif": "",
+    "remarques": "qqn = inviter"
+  },
+  {
+    "verb": "recommander",
+    "qqch": "qqch",
+    "qqn": "à qqn\nqqn",
+    "infinitif": "de faire qqch",
+    "remarques": "qqn = proposer"
+  },
+  {
+    "verb": "réfléchir",
+    "qqch": "à qqch",
+    "qqn": "",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "refuser",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "regarder",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "regretter",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "remercier",
+    "qqch": "",
+    "qqn": "qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "remettre",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "rencontrer",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "renoncer",
+    "qqch": "à qqch",
+    "qqn": "à qqn",
+    "infinitif": "à faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "répondre",
+    "qqch": "qqch\nà qqch",
+    "qqn": "à qqn",
+    "infinitif": "",
+    "remarques": "… à une question"
+  },
+  {
+    "verb": "ressembler",
+    "qqch": "à qqch",
+    "qqn": "à qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "réussir",
+    "qqch": "qqch",
+    "qqn": "",
+    "infinitif": "à faire qqch",
+    "remarques": "mais qqch réussit à qqn"
+  },
+  {
+    "verb": "rêver",
+    "qqch": "à qqch\nde qqch",
+    "qqn": "à qqn\nde qqn",
+    "infinitif": "de faire qqch",
+    "remarques": "à = quand on dort\nde = penser"
+  },
+  {
+    "verb": "rire",
+    "qqch": "de qqch",
+    "qqn": "de qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "risquer",
+    "qqch": "qqch",
+    "qqn": "",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "savoir",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "servir",
+    "qqch": "qqch\nà qqch",
+    "qqn": "qqn\nà qqn",
+    "infinitif": "à faire qqch",
+    "remarques": "mais qqn sert de guide"
+  },
+  {
+    "verb": "se servir",
+    "qqch": "de qqch",
+    "qqn": "de qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "songer",
+    "qqch": "à qqch",
+    "qqn": "à qqn",
+    "infinitif": "à faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "souhaiter",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "se souvenir",
+    "qqch": "de qqch",
+    "qqn": "de qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "suggérer",
+    "qqch": "qqch",
+    "qqn": "à qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "téléphoner",
+    "qqch": "",
+    "qqn": "à qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "tenir",
+    "qqch": "qqch\nà qqch",
+    "qqn": "qqn\nà qqn",
+    "infinitif": "à faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "tenter",
+    "qqch": "qqch",
+    "qqn": "",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "trouver",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "utiliser",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "pour faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "venir",
+    "qqch": "",
+    "qqn": "chez qqn",
+    "infinitif": "faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "visiter",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "vouloir",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "être censé",
+    "qqch": "",
+    "qqn": "",
+    "infinitif": "faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "être content",
+    "qqch": "de qqch",
+    "qqn": "de qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "être disposé",
+    "qqch": "",
+    "qqn": "",
+    "infinitif": "à faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "être fier",
+    "qqch": "de qqch",
+    "qqn": "de qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "être (mal)heureux",
+    "qqch": "de qqch",
+    "qqn": "",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "être obligé",
+    "qqch": "",
+    "qqn": "",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "être prêt",
+    "qqch": "",
+    "qqn": "",
+    "infinitif": "à faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "être satisfait",
+    "qqch": "de qqch",
+    "qqn": "de qqn",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "avoir besoin",
+    "qqch": "de qqch",
+    "qqn": "de qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "avoir envie",
+    "qqch": "de qqch",
+    "qqn": "de qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "avoir hâte",
+    "qqch": "",
+    "qqn": "",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "avoir honte",
+    "qqch": "de qqch",
+    "qqn": "de qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "avoir la chance",
+    "qqch": "",
+    "qqn": "",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "avoir l'air",
+    "qqch": "de qqch",
+    "qqn": "de qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "avoir l'habitude",
+    "qqch": "de qqch",
+    "qqn": "de qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "avoir l'intention",
+    "qqch": "",
+    "qqn": "",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "avoir l'occasion",
+    "qqch": "",
+    "qqn": "",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "avoir le temps",
+    "qqch": "",
+    "qqn": "",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "avoir mal",
+    "qqch": "à qqch",
+    "qqn": "",
+    "infinitif": "",
+    "remarques": ""
+  },
+  {
+    "verb": "avoir peur",
+    "qqch": "de qqch",
+    "qqn": "de qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "avoir raison",
+    "qqch": "de qqch",
+    "qqn": "",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "avoir soin",
+    "qqch": "de qqch",
+    "qqn": "de qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "avoir tort",
+    "qqch": "",
+    "qqn": "",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "ce n'est pas la peine",
+    "qqch": "",
+    "qqn": "",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "il est bon",
+    "qqch": "",
+    "qqn": "",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "il est important",
+    "qqch": "",
+    "qqn": "",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "il est temps",
+    "qqch": "",
+    "qqn": "",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "il faut",
+    "qqch": "qqch",
+    "qqn": "qqn",
+    "infinitif": "faire qqch",
+    "remarques": "mais il faut qqn pour faire qqch"
+  },
+  {
+    "verb": "il s'agit",
+    "qqch": "de qqch",
+    "qqn": "de qqn",
+    "infinitif": "de faire qqch",
+    "remarques": ""
+  },
+  {
+    "verb": "il vaut mieux",
+    "qqch": "",
+    "qqn": "",
+    "infinitif": "faire qqch",
+    "remarques": ""
+  }
+]

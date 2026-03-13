@@ -609,6 +609,8 @@
   function handleHash() {
     var hash = location.hash.replace("#", "");
     if (!hash) return; // stay on menu
+    if (hash === "verbes-prep") { window.startVerbesPrep && window.startVerbesPrep(); return; }
+    if (hash === "vp-practice") { window.vpStartPractice && window.vpStartPractice(); return; }
     if (hash === "connecteurs") { window.startConnecteurs && window.startConnecteurs(); return; }
     if (hash === "conn-express") { window.connStartExpress && window.connStartExpress(); return; }
     if (hash === "conn-vary") { window.connStartVary && window.connStartVary(); return; }
